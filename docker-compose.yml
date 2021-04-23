@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+  docker-bridge-local:
+    external:
+      name: docker-bridge-local
+
+services:
+  app:
+    container_name: dev-exam-backend
+    build: .
+    networks:
+      docker-bridge-local:
+        ipv4_address: 192.168.155.10
+    tty: true
+    stdin_open: true
+    restart: always
+    ports:
+      - "8081:8081"
